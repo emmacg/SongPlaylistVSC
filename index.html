@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Song Playlist</title>
+<title>Song Playlist</title> 
+<!-- Below are the imported styles and bootstrap features -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -18,15 +19,16 @@
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div< class="col-sm-8"></class><h2>Song <b>Playlist</b></h2></div>
-                    <div class="col-sm-4">
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Add New +</button>
+                    <div class="first-col"></class><button class=pop id=txt onclick="popFunction()"><h2>Song <b>Playlist</b></h2></div></button>
+                    <div class="second-col">
+                        <!-- This is the add new button and the corresponding modal  -->
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#aModal" data-whatever="@getbootstrap">Add New +</button>
 
-                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="aModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">New Song</h5>
+                              <h5 class="modal-title" id="ModalLabel">New Song</h5>
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
@@ -34,15 +36,15 @@
                             <form id="createNewEntry">
                             <div class="modal-body">
                                 <div class="form-group">
-                                  <label for="recipient-name" class="col-form-label">Artist Name: </label>
+                                  <label for="artist-name" class="col-form-label">Artist Name: </label>
                                   
-                                  <input name="artistName" type="text" class="form-control" id="recipient-name">
+                                  <input name="artistName" type="text" class="form-control" id="artist-name">
                                   
                                 </div>
                                 <div class="form-group">
-                                  <label for="message-text" class="col-form-label">Song Title: </label>
+                                  <label for="title-text" class="col-form-label">Song Title: </label>
                                   
-                                  <input name="songName" class="form-control" id="message-text"> 
+                                  <input name="songName" class="form-control" id="title-text"> 
                                
                                 </div>
                             </div>
@@ -57,6 +59,7 @@
                     </div>
                 </div>
             </div>
+            <!-- This is the table  -->
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -72,12 +75,12 @@
     </div>
 </div>     
 
-
-<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- This is the modal for the Update Function -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <h5 class="modal-title" id="ModalLabel"> New Song</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -85,17 +88,17 @@
       <div class="modal-body">
         <form id = "updateEntry">
           <div class="form-group">
-            <label id=artistUpdate  for="recipient-name" class="col-form-label">Artist Name: </label>
-            <input type="text" name="artistName" class="form-control" id="recipient-name">
+            <label id=artistUpdate  for="artist-name" class="col-form-label">Artist Name: </label>
+            <input type="text" name="artistName" class="form-control" id="artist-name">
           </div>
           <div class="form-group">
-            <label id=songUpdate for="message-text" class="col-form-label">Song Title:</label>
-            <textarea class="form-control" name="songName" id="message-text"></textarea>
+            <label id=songUpdate for="title-text" class="col-form-label">Song Title:</label>
+            <textarea class="form-control" name="songName" id="title-text"></textarea>
           </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Add To Playlist</button>
+        <button type="submit" class="btn btn-primary">Add to Playlist</button>
       </form>
       </div>
     </div>
@@ -105,13 +108,15 @@
 <!-- <h5><button onclick=changeColor()>Change Colour</button></section></h5> -->
 
 
+<!-- This is the embedded spotify playlist (does not change through app) -->
+
 </div>
 <h4>
   <iframe src="https://open.spotify.com/embed/playlist/7hEwMj6aSh87laPWcVnNDN" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 </h4>
 
 
-
+<!-- These are the links connecting JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src ="Playlist.js"></script>
 
