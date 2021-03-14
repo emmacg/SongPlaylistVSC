@@ -1,8 +1,8 @@
 "use strict"
-
+// pathway to backend application
 const contextPath = "http://localhost:8080";
 const table = document.getElementById("tableBody");
-
+//function taking information from backend and presenting it
 function getSongPlaylist() {
   axios.get(contextPath + "/read")
     .then(res => {
@@ -19,24 +19,11 @@ function getSongPlaylist() {
     }).catch(err => console.error(err))
 }
 
-// function getRandomColour(){
-//   let letters = '0123456789ABCDEF'
-//   let color = '#'
-//   for( let i = 0; i < 6; i++) {
-//       color += letters[Math.floor(Math.random() * 16)];
-//   }
-//   return color;
-// }
-// function changeColor(){
-//   let newColour = getRandomColour();
-//   document.table.style.backgroundColor = newColour;
-// }
-
-
+//function to display playlist content in html
 function renderSongPlaylist(SongPlaylist) {
 
   const newRow = document.createElement("tr");
-
+//function to create new song in row
   const newArtistName = document.createElement("td");
   console.log(SongPlaylist.id);
   newArtistName.innerText = SongPlaylist.artistName
@@ -45,7 +32,7 @@ function renderSongPlaylist(SongPlaylist) {
   const newSongName = document.createElement("td");
   newSongName.innerText = SongPlaylist.songName 
   newRow.appendChild(newSongName);
-
+//edit button and click to call function 
   const actions = document.createElement("td");
   const edit = document.createElement("button");
   edit.className = "edit"
@@ -58,7 +45,7 @@ function renderSongPlaylist(SongPlaylist) {
   });
   actions.appendChild(edit);
   newRow.appendChild(actions);
-
+//delete button and click to call function
   const remove = document.createElement("button");
   remove.className = "delete"
   remove.title = "Remove"
@@ -70,7 +57,7 @@ function renderSongPlaylist(SongPlaylist) {
   newRow.appendChild(actions);
 
 return newRow; }
-
+//delete row function
 function deleteSongPlaylist(id) {
   console.log(id)
   axios.delete(contextPath + "/removeSongPlaylist/" + id)
@@ -78,7 +65,7 @@ function deleteSongPlaylist(id) {
   .catch(err => console.error(err)); 
   
   }
-
+//connecting the create function to the html modal
 document.getElementById("createNewEntry").addEventListener('submit', function(event){
   event.preventDefault();
   console.log("this ", this);
@@ -105,14 +92,7 @@ axios.post(contextPath + "/create", data, {
 
 }) 
 
-// const updatedArtistName = document.createElement("td");
-// updatedArtistName.innerText = this.artistName
-// newRow.appendChild(updatedArtistName)
-
-// const updatedSongName = document.createElement("td");
-// updatedSongName.innerText = this.songName 
-// newRow.appendChild(updatedSongName);
-
+//update function logic
 let currentId = 0;
 document.getElementById("updateEntry").addEventListener('submit', function(event){
   event.preventDefault();
@@ -138,7 +118,7 @@ axios.put(contextPath + "/updateSongPlaylist/" + currentId, data, {
  .catch(err => console.error(err));
 }
 )
-  
+  //update function being called by edit button
   var myModal = new bootstrap.Modal(document.getElementById('updateModal')); 
   
   function updateTable(id) {
@@ -148,8 +128,10 @@ axios.put(contextPath + "/updateSongPlaylist/" + currentId, data, {
     }) 
 
   }
-
-
+//this is the function to show the instructions behind the title
+  function popFunction() {
+    document.getElementById("txt").innerHTML = "<b>How To Use The Playlist</b> Welcome to your Song Playlist! ADD new songs by clicking the 'Add New' button at the top of the screen. To DELETE an entry, clikc the 'Remove' button to the right of the title. To UPDATE or CHANGE an entry, click the 'Edit' button to the right of the title. You can play current entries via the Spotify playlist at the bottom of the screen. <i>The external playlist will not update through this application.</i>"
+  }
 
 
 getSongPlaylist();
